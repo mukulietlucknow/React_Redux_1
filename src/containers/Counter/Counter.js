@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Button} from 'shineout';
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from '../../store/actions/actionTypes';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
+
+
+import {increment , decrement ,increment5 , decrement5 , store_result , delete_result} from '../../store/actions/index';
 
 class Counter extends Component {
     state = {
@@ -56,12 +59,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
-        onDecrementCounter: () => dispatch({type: actionTypes.DECREMENT}),
-        onIncrement5Counter: () => dispatch({type: actionTypes.INCREMENT5}),
-        onDecrement5Counter: () => dispatch({type: actionTypes.DECREMENT5}),
-        onStoreResult: (result) => dispatch({type: actionTypes.STORE_RESULT , result: result}),
-        onDeleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT , resultElId:id })
+        onIncrementCounter: () => dispatch(increment()),
+        onDecrementCounter: () => dispatch(decrement()),
+        onIncrement5Counter: () => dispatch(increment5()),
+        onDecrement5Counter: () => dispatch(decrement5()),
+        onStoreResult: (result) => dispatch(store_result(result)),
+        onDeleteResult: (id) => dispatch(delete_result(id))
     };
 };
 
